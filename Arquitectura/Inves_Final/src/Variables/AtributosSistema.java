@@ -45,6 +45,9 @@ public class AtributosSistema {
     private HashMap<String, ArrayList<Double>> centroConsolidacion;
     private HashMap<String, ArrayList<ArrayList<Double>>> puntosDivicion;
 
+    //emisiones
+    private HashMap<String, double[][]> distanciasEmision;
+    
     static {
         variablesNombresExcel = new ArrayList<>();
         variablesNombresExcel.add(Constantes.Demanda_kg);
@@ -53,6 +56,27 @@ public class AtributosSistema {
     }
 
     public AtributosSistema() {
+        this.Nodos = new ArrayList<>();
+        this.centroConsolidacion = new HashMap<>();
+        this.puntosDivicion = new HashMap<>();
+        this.provedoresNombre = new ArrayList<>();
+        this.NodosSuperanVehiculo = new HashMap<>();
+        this.PesoVolProvedores = new HashMap<>();
+        this.CapVolVehiculo = new HashMap<>();
+        this.MatrizPuntos = new HashMap<>();
+        this.ImprimirNodos = new HashMap<>();
+        this.CargaTotalSistema = new HashMap<>();
+        this.PesoTotalPorDia = new HashMap<>();
+        this.NodosCargaMinima = new HashMap<>();
+        this.PesoVolProvedoresTemporal = this.PesoVolProvedores;
+        this.distanciasNoEvaluar = new HashMap<>();
+        this.entreFunciones = true;
+        this.resultadosFinales = new HashMap<>();
+        this.distanciasProvicional = new HashMap<>();
+        this.distanciasEmision = new HashMap<>();
+    }
+
+    public void IniciarSistema() {
         this.Nodos = new ArrayList<>();
         this.centroConsolidacion = new HashMap<>();
         this.puntosDivicion = new HashMap<>();
@@ -288,5 +312,12 @@ public class AtributosSistema {
         this.distanciasProvicional = distanciasProvicional;
     }
 
+    public HashMap<String, double[][]> getDistanciasEmision() {
+        return distanciasEmision;
+    }
+
+    public void setDistanciasEmision(HashMap<String, double[][]> distanciasEmision) {
+        this.distanciasEmision = distanciasEmision;
+    }
 
 }

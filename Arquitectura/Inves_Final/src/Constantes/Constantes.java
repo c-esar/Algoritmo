@@ -26,4 +26,20 @@ public interface Constantes {
     final String DistanciaTOtalSistema = "Distancia";
     final String VolumenTotalSistema = "Volumen";
     final String PesoTotalPorDia= "PesoDia";
+    final String TablaConversionPeso0 = "0";
+    final String TablaConversionPeso5999 = "5999";
+    final String TablaConversionPeso6000 = "6000";
+    final String TablaConversionPeso11999 = "11999";
+    final String TablaConversionPeso12000 = "12000";
+    final String TablaConversionPeso17999 = "17999";
+    final String TablaConversionPeso18000 = "18000";
+    final String TablaConversionPeso20999 = "20999";
+    final String TablaConversionPeso21000 = "21000";
+    final String TablaConversionPeso24000 = "24000";
+    final String TablaMultiplicador1 ="0.73190";
+    final String TablaMultiplicador2 ="0.81480";
+    final String TablaMultiplicador3 ="0.90790";
+    final String TablaMultiplicador4 ="1.00890";
+    final String TablaMultiplicador5 ="1.08380";
+    
 }

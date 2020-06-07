@@ -5,10 +5,67 @@
  */
 package Strategia;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author cesard.chacond
  */
 public abstract class MetodosCalculoEmision implements MetodosCalculo, Constantes.Constantes{
+    protected boolean CAB = true;
+    protected boolean SinAB = true;
+    protected String dias = null;
+    protected ArrayList<ArrayList<Double>> PesosNosuperados; // SinA
+    protected ArrayList<ArrayList<Double>> PesosNormal; // CA
+    protected ArrayList<ArrayList<Double>> Aux; // auxiliar
+    
+    public boolean isCAB() {
+        return CAB;
+    }
+
+    public void setCAB(boolean CAB) {
+        this.CAB = CAB;
+    }
+
+    public boolean isSinAB() {
+        return SinAB;
+    }
+
+    public void setSinAB(boolean SinAB) {
+        this.SinAB = SinAB;
+    }
+
+    public ArrayList<ArrayList<Double>> getPesosNosuperados() {
+        return PesosNosuperados;
+    }
+
+    public void setPesosNosuperados(ArrayList<ArrayList<Double>> PesosNosuperados) {
+        this.PesosNosuperados = PesosNosuperados;
+    }
+
+    public ArrayList<ArrayList<Double>> getPesosNormal() {
+        return PesosNormal;
+    }
+
+    public void setPesosNormal(ArrayList<ArrayList<Double>> PesosNormal) {
+        this.PesosNormal = PesosNormal;
+    }
+
+    public ArrayList<ArrayList<Double>> getAux() {
+        return Aux;
+    }
+
+    public void setAux(ArrayList<ArrayList<Double>> Aux) {
+        this.Aux = Aux;
+    }
+
+    public String getDias() {
+        return dias;
+    }
+
+    public void setDias(String dias) {
+        this.dias = dias;
+    }
+    
     
 }

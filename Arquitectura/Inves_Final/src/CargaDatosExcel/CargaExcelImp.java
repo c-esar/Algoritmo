@@ -29,6 +29,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.Font;
 
 /**
  *
@@ -178,6 +180,10 @@ public class CargaExcelImp implements CargaExcel, Constantes {
             String dia = null;
             boolean entre = true;
             int diaobtenido = 0;
+            CellStyle cellStyle = book.createCellStyle();
+            Font cellFont = book.createFont();
+            cellFont.setColor(Font.COLOR_RED);
+            cellStyle.setFont(cellFont);
             for (int i = 0; i < datos.getResultadosFinales().size(); i++) {
                 diaobtenido++;
                 dia = "Dia" + String.valueOf(diaobtenido);
@@ -187,9 +193,11 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                         entre = false;
                         if (!dia.equalsIgnoreCase("dia1")) {
                             countFilas++;
+                            countFilas++;
                         }
                         Row row = sheet.createRow(countFilas);
                         row.createCell(0).setCellValue("Rutas optimas dia " + diaobtenido);
+                        row.setRowStyle(cellStyle);
                         countFilas++;
                         Row rowEspacio2 = sheet.createRow(countFilas);
                         rowEspacio2.createCell(0).setCellValue("");
@@ -244,6 +252,7 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                         Row rowCentroConsolidacion = sheet.createRow(countFilas);
                         rowCentroConsolidacion.createCell(0).setCellValue("Centro consolidacion dia " + diaobtenido);
                         rowCentroConsolidacion.createCell(1).setCellValue("".equals(centroConsolidacion) ? "Ninguno" : centroConsolidacion);
+                        rowCentroConsolidacion.setRowStyle(cellStyle);
                         countFilas++;
                         Row rowEspacio = sheet.createRow(countFilas);
                         rowEspacio.createCell(0).setCellValue("");
@@ -251,16 +260,17 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                         Row rowCargaFinal = sheet.createRow(countFilas);
                         rowCargaFinal.createCell(0).setCellValue("Carga Total dia " + diaobtenido);
                         rowCargaFinal.createCell(1).setCellValue(datos.getResultadosFinales().get(dia).get("valoresFinales").get(1));
-
+                        rowCargaFinal.setRowStyle(cellStyle);
                         countFilas++;
                         Row rowVolumenFinal = sheet.createRow(countFilas);
                         rowVolumenFinal.createCell(0).setCellValue("Volumen Total dia " + diaobtenido);
                         rowVolumenFinal.createCell(1).setCellValue(datos.getResultadosFinales().get(dia).get("valoresFinales").get(2));
-
+                        rowVolumenFinal.setRowStyle(cellStyle);
                         countFilas++;
                         Row rowDistanciaFinal = sheet.createRow(countFilas);
                         rowDistanciaFinal.createCell(0).setCellValue("Distancia Total dia " + diaobtenido);
                         rowDistanciaFinal.createCell(1).setCellValue(datos.getResultadosFinales().get(dia).get("valoresFinales").get(0));
+                        rowDistanciaFinal.setRowStyle(cellStyle);
                         countFilas++;
                     } else {
                         diaobtenido++;

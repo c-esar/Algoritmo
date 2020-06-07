@@ -10,6 +10,7 @@ import Strategia.MetodosCalculo;
 import CargaDatosExcel.CargaExcel;
 import CargaDatosExcel.CargaExcelImp;
 import Strategia.MetodosCalculoDistanciaImp;
+import Strategia.MetodosCalculoEmisionImp;
 
 /**
  *
@@ -21,6 +22,8 @@ public class FactoryImp implements FactoryImplementacion {
     public boolean inicioMetodos(Object a) {
         if (a instanceof MetodosCalculoDistanciaImp){
            return ((MetodosCalculoDistanciaImp) a).InicioProceso(); 
+        }else if (a instanceof MetodosCalculoEmisionImp){
+            return ((MetodosCalculoEmisionImp) a).InicioProceso();
         } else if (a instanceof CargaExcelImp){
             return ((CargaExcelImp) a).IniciarLecturaExcel();
         }  

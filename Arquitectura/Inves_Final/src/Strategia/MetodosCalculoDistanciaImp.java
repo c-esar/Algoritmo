@@ -29,9 +29,6 @@ import java.util.Random;
  */
 public class MetodosCalculoDistanciaImp extends MetodosCalculoDistancia {
 
-    private static ArrayList<ArrayList<Double>> puntosOriginal = new ArrayList<>();
-    private String dias = null;
-
     public MetodosCalculoDistanciaImp(double Volumen, double Capacidad, double CargaMinima, double PorRuta, double KilometrosDesviar) {
         datos.getCapVolVehiculo().put(Capacidad_Vehiculo, Capacidad);
         datos.getCapVolVehiculo().put(Volumen_Vehiculo, Volumen);
@@ -53,11 +50,6 @@ public class MetodosCalculoDistanciaImp extends MetodosCalculoDistancia {
                 datos.getDistanciasProvicional().put(dias, datos.getDistancias());
                 System.out.println("Ruta para " + dias);
                 System.out.println("");
-//                if (datos.getPesoTotalPorDia().get(dia).get(Constantes.Constantes.Demanda_kg) < datos.getCapVolVehiculo().get(Constantes.Constantes.Capacidad_Vehiculo)) {
-//                    System.out.println("Sistema se puede recoger con un solo Camion");
-//                    System.out.println(CrearNodosDirectos(dia));
-//                    ImprimirResultadoSistema(false, dia);
-//                } else {
                 CrearPuntosArrayList(datos.getDistancias(), dias, datos.getPesoVolProvedores().size()); // unir parejas con ahorro
                 if (datos.isEntreFunciones()) {
                     CompararNodosConCapacidadVehiculo(dias, datos.getCapVolVehiculo().get(Capacidad_Vehiculo), datos.getCapVolVehiculo().get(Volumen_Vehiculo),
@@ -66,19 +58,12 @@ public class MetodosCalculoDistanciaImp extends MetodosCalculoDistancia {
                     VerificarNodos(dias, datos.getMatrizPuntos().get(dias), datos.getNumeroProvedores(),
                             datos.getPesoVolProvedores().get(dias).get(Constantes.Constantes.Demanda_kg), datos.getPesoVolProvedores().get(dias).get(Constantes.Constantes.Volumen));
 
-                    this.puntosOriginal = CrearArreglo(datos.getMatrizPuntos().get(dias).get(Nodos_Con_Ahorro), datos.getMatrizPuntos().get(dias).get(Nodos_Superan_Capacidad_Vehiculo),
-                            datos.getMatrizPuntos().get(dias).get(Nodos_Directos), dias);
-                    CambiarNodos(this.getPuntosOriginal(), dias, datos.getPorRuta());
-
-                    //ImprimirResultado(dia, datos.getMatrizPuntos().get(dia), datos.getDistancias(),
-                    //datos.getPesoVolProvedores().get(dia).get(Constantes.Constantes.Demanda_kg), datos.getPesoVolProvedores().get(dia).get(Constantes.Constantes.Volumen));
-                    //ImprimirProvesoresCargaMinima(datos.getDistanciasNoEvaluar(), dia);
-                    //ImprimirResultadoSistema(true, dia);
+                    CambiarNodos(CrearArreglo(datos.getMatrizPuntos().get(dias).get(Nodos_Con_Ahorro), datos.getMatrizPuntos().get(dias).get(Nodos_Superan_Capacidad_Vehiculo),
+                            datos.getMatrizPuntos().get(dias).get(Nodos_Directos), dias), dias, datos.getPorRuta());
                     System.out.println("");
                 } else {
                     //ImprimirResultadoSistema(true, dias);
                 }
-//                }
             }
             excel.crearExcel();
             return true;
@@ -1077,7 +1062,8 @@ public class MetodosCalculoDistanciaImp extends MetodosCalculoDistancia {
         return CargaGrupo;
     }
 
-    private ArrayList<ArrayList<Double>> CrearArreglo(ArrayList<ArrayList<Double>> nodosAhorro, ArrayList<ArrayList<Double>> superanCapacidad, ArrayList<ArrayList<Double>> nodosDirectos, String dia) {
+    @Override
+    public ArrayList<ArrayList<Double>> CrearArreglo(ArrayList<ArrayList<Double>> nodosAhorro, ArrayList<ArrayList<Double>> superanCapacidad, ArrayList<ArrayList<Double>> nodosDirectos, String dia) {
         ArrayList<ArrayList<Double>> copiaOriginal = new ArrayList<>();
         for (int i = 0; i < nodosDirectos.size(); i++) {
             double tmp = nodosDirectos.get(i).get(0).doubleValue();
@@ -1266,14 +1252,6 @@ public class MetodosCalculoDistanciaImp extends MetodosCalculoDistancia {
 
         }
         return tmp + datos.getKilometrosDesviar();
-    }
-
-    public static ArrayList<ArrayList<Double>> getPuntosOriginal() {
-        return puntosOriginal;
-    }
-
-    public static void setPuntosOriginal(ArrayList<ArrayList<Double>> puntosOriginal) {
-        MetodosCalculoDistanciaImp.puntosOriginal = puntosOriginal;
     }
 
     private ArrayList<ArrayList<Double>> bloqueoPuntos(int numero, int iteracion, ArrayList<ArrayList<Double>> bloqueo) {

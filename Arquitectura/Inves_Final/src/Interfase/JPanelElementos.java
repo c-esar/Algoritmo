@@ -22,6 +22,7 @@ import CargaDatosExcel.CargaExcel;
 import Builder.SalidaCsv;
 import java.awt.Image;
 import java.awt.Toolkit;
+import static Constantes.Constantes.datos;
 
 /**
  *
@@ -50,7 +51,7 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
 //        this.jTextKilometrosDesviar.setText("50");
         initComponents();
     }
-    
+
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("recursos/shopping-list.png"));
@@ -82,8 +83,6 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
         jButton2_GenerarExcel = new javax.swing.JButton();
         jComboBox1_Metodos = new javax.swing.JComboBox<>();
         jLabel1_metodos = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1_salida = new javax.swing.JComboBox<>();
 
         jTextField1_NumeroProvedores.setText("0");
 
@@ -138,15 +137,6 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
 
         jLabel1_metodos.setText("Seleccionar Metodo");
 
-        jLabel1.setText("Salida del archivo");
-
-        jComboBox1_salida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Excel", "CSV" }));
-        jComboBox1_salida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1_salidaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,13 +147,9 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1_metodos)
-                                    .addComponent(jLabel1))
+                                .addComponent(jLabel1_metodos)
                                 .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox1_salida, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1_Metodos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jComboBox1_Metodos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -190,9 +176,9 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
                         .addGap(10, 10, 10))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1_SubirExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2_GenerarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,15 +207,11 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1_Metodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1_metodos))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1_salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1_SubirExcel)
                     .addComponent(jButton2_GenerarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -256,9 +238,9 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
         if (!"".equals(jTextField2_CpaVehiculo.getText()) && !"".equals(jTextField3_CapVolumen.getText()) && archivo != null) {
             switch (jComboBox1_Metodos.getSelectedIndex()) {
                 case 0: {
-                    if (factoryImp.inicioMetodos(new CargaExcelImp(archivo.getPath(),Integer.parseInt(jTextField1_NumeroProvedores.getText())))) {
+                    if (factoryImp.inicioMetodos(new CargaExcelImp(archivo.getPath(), Integer.parseInt(jTextField1_NumeroProvedores.getText())))) {
                         if (factoryImp.inicioMetodos(new MetodosCalculoDistanciaImp(Double.parseDouble(jTextField3_CapVolumen.getText()), Double.parseDouble(jTextField2_CpaVehiculo.getText()), Double.parseDouble(jTextField4_CargaMin.getText()), Double.parseDouble(jTextField5_ProRuta.getText()), Double.parseDouble(jTextKilometrosDesviar.getText())))) {
-                            switch (jComboBox1_salida.getSelectedItem().toString()) {
+                            switch ("Excel") {
                                 case "Excel": {
                                     try {
                                         datosDirector.setSalidaBuilder(new SalidaExcel());
@@ -268,6 +250,7 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
                                         switch (input) {
                                             case 0: {
                                                 archivo = null;
+                                                datos.IniciarSistema();
                                                 JOptionPane.showMessageDialog(null, "Digite nuevamente los datos", "Información", JOptionPane.INFORMATION_MESSAGE);
                                                 break;
                                             }
@@ -293,37 +276,6 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
                                     }
 
                                 }
-                                case "CSV": {
-                                    try {
-                                        datosDirector.setSalidaBuilder(new SalidaCsv());
-                                        datosDirector.creacionSalida();
-                                        JOptionPane.showMessageDialog(null, "CSV generado", "Exito", JOptionPane.INFORMATION_MESSAGE);
-                                        int input = JOptionPane.showConfirmDialog(null, "Generar nuevo excel", "Información", JOptionPane.INFORMATION_MESSAGE);
-                                        switch (input) {
-                                            case 0: {
-                                                jTextField3_CapVolumen.setText("");
-                                                jTextField2_CpaVehiculo.setText("");
-                                                archivo = null;
-                                                JOptionPane.showMessageDialog(null, "Digite nuevamente los datos", "Información", JOptionPane.INFORMATION_MESSAGE);
-                                                break;
-                                            }
-                                            case 1: {
-                                                dispose();
-                                                break;
-                                            }
-                                            case 2: {
-                                                dispose();
-                                                break;
-                                            }
-                                            default: {
-                                                dispose();
-                                            }
-                                        }
-                                        break;
-                                    } catch (Exception e) {
-                                        JOptionPane.showMessageDialog(null, "Error al generar el CSV" + e, "Error", JOptionPane.ERROR_MESSAGE);
-                                    }
-                                }
                                 default:
                                     JOptionPane.showMessageDialog(null, "Se presento un problema al generar el excel", "Error", JOptionPane.ERROR_MESSAGE);
                                     dispose();
@@ -340,16 +292,56 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
                     break;
                 }
                 case 1: {
-                    if (true) {
-                        if (factoryImp.inicioMetodos(new MetodosCalculoEmisionImp())) {
-                            JOptionPane.showMessageDialog(null, "Excel generado", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                    if (factoryImp.inicioMetodos(new CargaExcelImp(archivo.getPath(), Integer.parseInt(jTextField1_NumeroProvedores.getText())))) {
+                        if (factoryImp.inicioMetodos(new MetodosCalculoEmisionImp(Double.parseDouble(jTextField3_CapVolumen.getText()), Double.parseDouble(jTextField2_CpaVehiculo.getText()), Double.parseDouble(jTextField4_CargaMin.getText()), Double.parseDouble(jTextField5_ProRuta.getText()), Double.parseDouble(jTextKilometrosDesviar.getText())))) {
+                            switch ("Excel") {
+                                case "Excel": {
+                                    try {
+                                        datosDirector.setSalidaBuilder(new SalidaExcel());
+                                        datosDirector.creacionSalida();
+                                        JOptionPane.showMessageDialog(null, "Excel generado", "Exito", JOptionPane.INFORMATION_MESSAGE);
+                                        int input = JOptionPane.showConfirmDialog(null, "Generar nuevo excel", "Información", JOptionPane.INFORMATION_MESSAGE);
+                                        switch (input) {
+                                            case 0: {
+                                                archivo = null;
+                                                datos.IniciarSistema();
+                                                JOptionPane.showMessageDialog(null, "Digite nuevamente los datos", "Información", JOptionPane.INFORMATION_MESSAGE);
+                                                break;
+                                            }
+                                            case 1: {
+                                                dispose();
+                                                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                                break;
+                                            }
+                                            case 2: {
+                                                dispose();
+                                                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                                break;
+                                            }
+                                            default: {
+                                                dispose();
+                                                this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                                            }
+                                        }
+                                        System.out.println(input);
+                                        break;
+                                    } catch (Exception e) {
+                                        JOptionPane.showMessageDialog(null, "Error al generar el excel" + e, "Error", JOptionPane.ERROR_MESSAGE);
+                                    }
+
+                                }
+                                default:
+                                    JOptionPane.showMessageDialog(null, "Se presento un problema al generar el excel", "Error", JOptionPane.ERROR_MESSAGE);
+                                    dispose();
+                                    break;
+                            }
                         } else {
                             JOptionPane.showMessageDialog(null, "Se presento un problema al generar el excel", "Error", JOptionPane.ERROR_MESSAGE);
                         }
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Problema a carga datos", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-
                     break;
                 }
                 default: {
@@ -362,10 +354,6 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
 
     }//GEN-LAST:event_jButton2_GenerarExcelActionPerformed
 
-    private void jComboBox1_salidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_salidaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1_salidaActionPerformed
-
     private void jComboBox1_MetodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1_MetodosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1_MetodosActionPerformed
@@ -375,8 +363,6 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
     private javax.swing.JButton jButton1_SubirExcel;
     private javax.swing.JButton jButton2_GenerarExcel;
     private javax.swing.JComboBox<String> jComboBox1_Metodos;
-    private javax.swing.JComboBox<String> jComboBox1_salida;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel1_metodos;
     private javax.swing.JLabel jLabel1_numeroProvedores;
     private javax.swing.JLabel jLabel2_CapVehiculo;

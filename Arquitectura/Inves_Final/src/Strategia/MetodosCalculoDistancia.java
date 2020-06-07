@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public abstract class MetodosCalculoDistancia implements MetodosCalculo, Constantes.Constantes{
     protected boolean CAB = true;
     protected boolean SinAB = true;
+    protected String dias = null;
     protected ArrayList<ArrayList<Double>> PesosNosuperados; // SinA
     protected ArrayList<ArrayList<Double>> PesosNormal; // CA
     protected ArrayList<ArrayList<Double>> Aux; // auxiliar
@@ -57,6 +58,14 @@ public abstract class MetodosCalculoDistancia implements MetodosCalculo, Constan
 
     public void setAux(ArrayList<ArrayList<Double>> Aux) {
         this.Aux = Aux;
+    }
+
+    public String getDias() {
+        return dias;
+    }
+
+    public void setDias(String dias) {
+        this.dias = dias;
     }
     
     

@@ -58,4 +58,6 @@ public interface MetodosCalculo {
     public double CalcularVolumenImprimir(double PuntoX, double PuntoY, double CapVolumen);
 
     public double CalcularDistancia(double[][] distancia, int PuntoX, int PuntoY);
+    
+    public ArrayList<ArrayList<Double>> CrearArreglo(ArrayList<ArrayList<Double>> nodosAhorro, ArrayList<ArrayList<Double>> superanCapacidad, ArrayList<ArrayList<Double>> nodosDirectos, String dia);
 }
