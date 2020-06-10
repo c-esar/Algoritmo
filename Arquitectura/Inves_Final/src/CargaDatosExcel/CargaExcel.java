@@ -14,4 +14,5 @@ public interface CargaExcel {
     public boolean Leer();
     public boolean IniciarLecturaExcel();
     public boolean crearExcel();
+    public boolean crearExcelEmision();
 }

@@ -108,7 +108,7 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
 
         jTextField4_CargaMin.setText("1000");
 
-        jTextField5_ProRuta.setText("2");
+        jTextField5_ProRuta.setText("4");
 
         jTextKilometrosDesviar.setText("50");
 
@@ -135,7 +135,7 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
             }
         });
 
-        jLabel1_metodos.setText("Seleccionar Metodo");
+        jLabel1_metodos.setText("Seleccionar Método");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

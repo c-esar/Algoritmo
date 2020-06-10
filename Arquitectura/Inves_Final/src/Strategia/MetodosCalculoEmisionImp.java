@@ -63,7 +63,7 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
                     //ImprimirResultadoSistema(true, dias);
                 }
             }
-            excel.crearExcel();
+            excel.crearExcelEmision();
             return true;
         } catch (Exception e) {
             return false;
@@ -814,10 +814,12 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
             ArrayList<Double> volumen = new ArrayList<>();
             ArrayList<Double> carga = new ArrayList<>();
             ArrayList<Double> distancia = new ArrayList<>();
+            ArrayList<Double> emisiones = new ArrayList<>();
             datos.getResultadosFinales().put(dia, new HashMap());
             datos.getResultadosFinales().get(dia).put("volumen", new ArrayList<>());
             datos.getResultadosFinales().get(dia).put("carga", new ArrayList<>());
             datos.getResultadosFinales().get(dia).put("distancia", new ArrayList<>());
+            datos.getResultadosFinales().get(dia).put("emision", new ArrayList<>());
             if (entreRutas) {
                 for (int y = 0; y < rutas.length; y++) {
                     tmpCopia.add(new ArrayList<>());
@@ -873,18 +875,25 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
                 distancia.add(onValorDistanciaGruposProvicional(tmpCopia.get(i)));
             }
             datos.getResultadosFinales().get(dia).put("distancia", distancia);
+            for (int i = 0; i < tmpCopia.size(); i++) {
+                emisiones.add(onValorEmisionGruposProvicional(tmpCopia.get(i)));
+            }
+            datos.getResultadosFinales().get(dia).put("emision", emisiones);
             double distanciaTotaldia = 0;
             double cargatotaldia = 0;
             double volumentotaldia = 0;
+            double emisiontotaldia = 0;
             for (int i = 0; i < datos.getResultadosFinales().get(dia).get("distancia").size(); i++) {
                 distanciaTotaldia += datos.getResultadosFinales().get(dia).get("distancia").get(i);
                 cargatotaldia += datos.getResultadosFinales().get(dia).get("carga").get(i);
                 volumentotaldia += datos.getResultadosFinales().get(dia).get("volumen").get(i);
+                emisiontotaldia += datos.getResultadosFinales().get(dia).get("emision").get(i);
             }
             ArrayList<Double> valoresFinales = new ArrayList<>();
             valoresFinales.add(distanciaTotaldia);
             valoresFinales.add(cargatotaldia);
             valoresFinales.add(volumentotaldia);
+            valoresFinales.add(emisiontotaldia);
             valoresFinales.add((double) grupos);
             datos.getResultadosFinales().get(dia).put("valoresFinales", valoresFinales);
             //falta armar excel
@@ -936,26 +945,26 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
     }
 
     private ArrayList<Double> organizarPuntos(ArrayList<Double> grupo) {
-        double distancia = onValorDistanciaGrupos(grupo);
+        double distancia = onValorDistanciaGruposProvicional(grupo);
         ArrayList<Double> nuevoGrupo = new ArrayList<>();
         nuevoGrupo = (ArrayList) grupo.clone();
         Random random = new Random();
         boolean entre = false;
-        double kilometrosdesviar = onPuntomasLejadoOrigen(grupo);
+        //double kilometrosdesviar = onPuntomasLejadoOrigen(grupo);
         if (grupo.size() == 2) {
             double aux = 0D;
             aux = grupo.get(0);
             grupo.set(0, grupo.get(1));
             grupo.set(1, aux);
-            double tmp = onValorDistanciaGrupos(grupo);
-            if (tmp < kilometrosdesviar) {
-                entre = true;
+            double tmp = onValorDistanciaGruposProvicional(grupo);
+//            if (tmp < kilometrosdesviar) { 
                 if (tmp < distancia) {
+                    entre = true;
                     nuevoGrupo = (ArrayList) grupo.clone();
                 }
-            }
+//            }
         } else {
-            kilometrosdesviar = onPuntomasLejadoOrigen(grupo);
+//            kilometrosdesviar = onPuntomasLejadoOrigen(grupo);
             int valor = (int) Math.floor(Math.random() * (grupo.size() * 2) + 1);
             for (int i = 0; i < 50; i++) {
                 int numero = random.nextInt(grupo.size());
@@ -967,52 +976,83 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
                 double obtenerNumero2 = grupo.get(numero2);
                 grupo.set(numero, obtenerNumero2);
                 grupo.set(numero2, obtenerNumero);
-                double tmp = onValorDistanciaGrupos(grupo);
-                if (tmp < kilometrosdesviar) {
-                    entre = true;
+                double tmp = onValorDistanciaGruposProvicional(grupo);
+//                if (tmp < kilometrosdesviar) {  
                     if (tmp < distancia) {
+                        entre = true;
                         nuevoGrupo = (ArrayList) grupo.clone();
                         distancia = tmp;
                     }
-                }
+//                }
             }
         }
-        if (grupo.size() != 2) {
-            if (!(entre == true)) {
-                nuevoGrupo = null;
-            } else {
-                nuevoGrupo = grupo;
-            }
-        }
+//        if (grupo.size() != 2) {
+//            if (!(entre == true)) {
+//                nuevoGrupo = null;
+//            } else {
+//                nuevoGrupo = grupo;
+//            }
+//        }
 
         return nuevoGrupo;
     }
 
-    private double onValorDistanciaGrupos(ArrayList<Double> grupo) {
-        double tmp = 0.0;
-        for (int j = 0; j < grupo.size(); j++) {
-            if (datos.getDistancias().length != datos.getDistanciasProvicional().get(dias).length) {
-                if (grupo.size() > (j + 1)) {
-                    tmp += CalcularDistancia(datos.getDistanciasProvicional().get(dias), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
-                } else {
-                    tmp += CalcularDistancia(datos.getDistanciasProvicional().get(dias), (int) grupo.get(j).intValue(), 0);
-                }
-            } else {
-                if (grupo.size() > (j + 1)) {
-                    tmp += CalcularDistancia(datos.getDistancias(), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
-                } else {
-                    tmp += CalcularDistancia(datos.getDistancias(), (int) grupo.get(j).intValue(), 0);
-                }
-            }
-
-        }
-        return tmp;
-    }
+//    private double onValorDistanciaGrupos(ArrayList<Double> grupo) {
+//        double tmp = 0.0;
+//        for (int j = 0; j < grupo.size(); j++) {
+//            if (datos.getDistancias().length != datos.getDistanciasProvicional().get(dias).length) {
+//                if (grupo.size() > (j + 1)) {
+//                    tmp += CalcularDistancia(datos.getDistanciasProvicional().get(dias), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
+//                } else {
+//                    tmp += CalcularDistancia(datos.getDistanciasProvicional().get(dias), (int) grupo.get(j).intValue(), 0);
+//                }
+//            } else {
+//                if (grupo.size() > (j + 1)) {
+//                    tmp += CalcularDistancia(datos.getDistancias(), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
+//                } else {
+//                    tmp += CalcularDistancia(datos.getDistancias(), (int) grupo.get(j).intValue(), 0);
+//                }
+//            }
+//
+//        }
+//        return tmp;
+//    }
 
     private double onValorDistanciaGruposProvicional(ArrayList<Double> grupo) {
         double tmp = 0.0;
         for (int j = 0; j < grupo.size(); j++) {
             if (datos.getDistancias().length != datos.getDistanciasProvicional().get(dias).length) {
+                double numero1 = this.onBuscarValorNumeroPorDistancia(grupo.get(j));               
+                if (grupo.size() > (j + 1)) {
+                    double numero2 = this.onBuscarValorNumeroPorDistancia(grupo.get(j + 1));
+                    tmp += CalcularDistancia(datos.getDistancias(), (int) numero1, (int) numero2);
+                } else {
+                    tmp += CalcularDistancia(datos.getDistancias(), (int) numero1, 0);
+                }
+            } else {
+                if (grupo.size() > (j + 1)) {
+                    tmp += CalcularDistancia(datos.getDistancias(), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
+                } else {
+                    tmp += CalcularDistancia(datos.getDistancias(), (int) grupo.get(j).intValue(), 0);
+                }
+            }
+        }
+        return tmp;
+    }
+
+    private double onBuscarValorNumeroPorDistancia(double numero) {
+        for (int i = 0; i < datos.getPuntosDivicion().get(dias).size(); i++) {
+            if (numero == datos.getPuntosDivicion().get(dias).get(i).get(0)) {
+                return datos.getPuntosDivicion().get(dias).get(i).get(1);
+            }
+        }
+        return numero;
+    }
+
+    private double onValorEmisionGruposProvicional(ArrayList<Double> grupo) {
+        double tmp = 0.0;
+        for (int j = 0; j < grupo.size(); j++) {
+            if (datos.getDistanciasEmision().get(dias).length != datos.getDistanciasProvicional().get(dias).length) {
                 if (grupo.size() > (j + 1)) {
                     tmp += CalcularDistancia(datos.getDistanciasProvicional().get(dias), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
                 } else {
@@ -1020,9 +1060,9 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
                 }
             } else {
                 if (grupo.size() > (j + 1)) {
-                    tmp += CalcularDistancia(datos.getDistancias(), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
+                    tmp += CalcularDistancia(datos.getDistanciasEmision().get(dias), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
                 } else {
-                    tmp += CalcularDistancia(datos.getDistancias(), (int) grupo.get(j).intValue(), 0);
+                    tmp += CalcularDistancia(datos.getDistanciasEmision().get(dias), (int) grupo.get(j).intValue(), 0);
                 }
             }
         }
@@ -1148,6 +1188,7 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
         }
         ArrayList<ArrayList<Double>> tmp3 = new ArrayList<>();
         int cont = 0;
+        //se divide el proveedor si se necesita 
         for (int i = 0; i < datos.getNodosSuperanVehiculo().get(dia).size(); i++) {
             double valorProvedorCarga = datos.getPesoVolProvedores().get(dia).get(Constantes.Constantes.Demanda_kg).get(datos.getNodosSuperanVehiculo().get(dia).get(i));
             double valorProvedorVolumen = datos.getPesoVolProvedores().get(dia).get(Constantes.Constantes.Volumen).get(datos.getNodosSuperanVehiculo().get(dia).get(i));
