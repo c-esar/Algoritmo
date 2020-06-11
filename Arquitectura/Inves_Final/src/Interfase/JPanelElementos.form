@@ -45,9 +45,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel1_metodos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                              <Component id="jComboBox1_Metodos" max="32767" attributes="0"/>
+                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                              <Component id="jTextKilometrosDesviar" pref="181" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -59,7 +59,6 @@
                                       <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jLabel2_CapVehiculo" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel4_CargaMIn" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel3_CapVolumen" alignment="0" min="-2" max="-2" attributes="0"/>
                                           </Group>
@@ -71,10 +70,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jTextKilometrosDesviar" alignment="0" pref="181" max="32767" attributes="0"/>
-                                              <Component id="jTextField5_ProRuta" alignment="0" max="32767" attributes="0"/>
-                                          </Group>
+                                          <Component id="jTextField5_ProRuta" alignment="0" pref="181" max="32767" attributes="0"/>
                                           <Component id="jTextField2_CpaVehiculo" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jTextField3_CapVolumen" alignment="1" min="-2" pref="180" max="-2" attributes="0"/>
@@ -89,6 +85,12 @@
                       <Component id="jButton1_SubirExcel" min="-2" pref="126" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jButton2_GenerarExcel" min="-2" pref="141" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLabel1_metodos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jComboBox1_Metodos" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -120,13 +122,13 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jTextKilometrosDesviar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jComboBox1_Metodos" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1_metodos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox1_Metodos" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextKilometrosDesviar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
