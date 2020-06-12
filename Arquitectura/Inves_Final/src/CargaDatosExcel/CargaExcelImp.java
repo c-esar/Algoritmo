@@ -217,11 +217,12 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                                         break;
                                     }
                                 }
-                                armogrupo += String.valueOf(num);
+
+                                armogrupo += String.valueOf((int) Double.parseDouble(String.valueOf(datos.getProvedoresNombre().get(num))));
                                 if (p < datos.getResultadosFinales().get(dia).get("grupo" + (j + 1)).size() - 1) {
                                     armogrupo += ",";
                                 } else {
-                                    armogrupo += ",0";
+                                    armogrupo += "," + String.valueOf((int) Double.parseDouble(String.valueOf(datos.getProvedoresNombre().get(0))));
                                 }
                             }
                             rowgrupos.createCell(countColumnas).setCellValue(armogrupo);
@@ -243,7 +244,7 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                         }
                         String centroConsolidacion = "";
                         for (int l = 0; l < datos.getCentroConsolidacion().get(dia).size(); l++) {
-                            centroConsolidacion += String.valueOf((int) datos.getCentroConsolidacion().get(dia).get(l).intValue());
+                            centroConsolidacion +=String.valueOf((int) Double.parseDouble(String.valueOf(datos.getProvedoresNombre().get((int) datos.getCentroConsolidacion().get(dia).get(l).intValue()))));
                             if (l < datos.getCentroConsolidacion().get(dia).size() - 1) {
                                 centroConsolidacion += ",";
                             }
@@ -341,11 +342,11 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                                         break;
                                     }
                                 }
-                                armogrupo += String.valueOf(num);
+                                armogrupo += String.valueOf((int) Double.parseDouble(String.valueOf(datos.getProvedoresNombre().get(num))));
                                 if (p < datos.getResultadosFinales().get(dia).get("grupo" + (j + 1)).size() - 1) {
                                     armogrupo += ",";
                                 } else {
-                                    armogrupo += ",0";
+                                    armogrupo += "," + String.valueOf((int) Double.parseDouble(String.valueOf(datos.getProvedoresNombre().get(0))));
                                 }
                             }
                             rowgrupos.createCell(countColumnas).setCellValue(armogrupo);
@@ -371,7 +372,7 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                         }
                         String centroConsolidacion = "";
                         for (int l = 0; l < datos.getCentroConsolidacion().get(dia).size(); l++) {
-                            centroConsolidacion += String.valueOf((int) datos.getCentroConsolidacion().get(dia).get(l).intValue());
+                            centroConsolidacion +=String.valueOf((int) Double.parseDouble(String.valueOf(datos.getProvedoresNombre().get((int) datos.getCentroConsolidacion().get(dia).get(l).intValue()))));
                             if (l < datos.getCentroConsolidacion().get(dia).size() - 1) {
                                 centroConsolidacion += ",";
                             }

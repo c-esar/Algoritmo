@@ -556,6 +556,13 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
         int J = (int) PuntoY;
         return distancia[I][J];
     }
+    
+    public double CalcularDistanciaNuevaEmision(double[][] distancia, int PuntoX, int PuntoY, double carga) {
+        int I = (int) PuntoX;
+        int J = (int) PuntoY; 
+        double multiplicador = SacarMultiplicador(carga);
+        return distancia[I][J] * multiplicador;
+    }
 
     private ArrayList<ArrayList<Double>> VerificarCantidadNodos(ArrayList<ArrayList<Double>> PesosNormall, int numeroProvedores, ArrayList<Double> Peso, ArrayList<Double> Volumen) {
         ArrayList<Integer> countX = new ArrayList<>();
@@ -1050,19 +1057,24 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
     }
 
     private double onValorEmisionGruposProvicional(ArrayList<Double> grupo) {
-        double tmp = 0.0;
+        double tmp = 0.0; //emision
+        double carga = 0.0;
         for (int j = 0; j < grupo.size(); j++) {
             if (datos.getDistanciasEmision().get(dias).length != datos.getDistanciasProvicional().get(dias).length) {
+                carga += datos.getPesoVolProvedores().get(dias).get(Constantes.Constantes.Demanda_kg).get(grupo.get(j).intValue());
+                double numero1 = this.onBuscarValorNumeroPorDistancia(grupo.get(j)); 
                 if (grupo.size() > (j + 1)) {
-                    tmp += CalcularDistancia(datos.getDistanciasProvicional().get(dias), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
+                    double numero2 = this.onBuscarValorNumeroPorDistancia(grupo.get(j + 1));
+                    tmp += CalcularDistanciaNuevaEmision(datos.getDistancias(), (int) numero1, (int) numero2,carga);
                 } else {
-                    tmp += CalcularDistancia(datos.getDistanciasProvicional().get(dias), (int) grupo.get(j).intValue(), 0);
+                    tmp += CalcularDistanciaNuevaEmision(datos.getDistancias(), (int) numero1, 0,carga);
                 }
             } else {
+                carga += datos.getPesoVolProvedores().get(dias).get(Constantes.Constantes.Demanda_kg).get(grupo.get(j).intValue());
                 if (grupo.size() > (j + 1)) {
-                    tmp += CalcularDistancia(datos.getDistanciasEmision().get(dias), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue());
+                    tmp += CalcularDistanciaNuevaEmision(datos.getDistancias(), (int) grupo.get(j).intValue(), (int) grupo.get(j + 1).intValue(), carga);
                 } else {
-                    tmp += CalcularDistancia(datos.getDistanciasEmision().get(dias), (int) grupo.get(j).intValue(), 0);
+                    tmp += CalcularDistanciaNuevaEmision(datos.getDistancias(), (int) grupo.get(j).intValue(), 0,carga);
                 }
             }
         }
