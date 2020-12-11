@@ -250,11 +250,6 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                             }
                         }
                         countFilas++;
-                        Row rowCentroConsolidacion = sheet.createRow(countFilas);
-                        rowCentroConsolidacion.createCell(0).setCellValue("Centro consolidacion dia " + diaobtenido);
-                        rowCentroConsolidacion.createCell(1).setCellValue("".equals(centroConsolidacion) ? "Ninguno" : centroConsolidacion);
-                        rowCentroConsolidacion.setRowStyle(cellStyle);
-                        countFilas++;
                         Row rowEspacio = sheet.createRow(countFilas);
                         rowEspacio.createCell(0).setCellValue("");
                         countFilas++;
@@ -273,6 +268,11 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                         rowDistanciaFinal.createCell(1).setCellValue(datos.getResultadosFinales().get(dia).get("valoresFinales").get(0));
                         rowDistanciaFinal.setRowStyle(cellStyle);
                         countFilas++;
+                        countFilas++;
+                        Row rowCentroConsolidacion = sheet.createRow(countFilas);
+                        rowCentroConsolidacion.createCell(0).setCellValue("Centro consolidacion dia " + diaobtenido);
+                        rowCentroConsolidacion.createCell(1).setCellValue("".equals(centroConsolidacion) ? "Ninguno" : centroConsolidacion);
+                        rowCentroConsolidacion.setRowStyle(cellStyle);
                     } else {
                         diaobtenido++;
                         dia = "Dia" + String.valueOf(diaobtenido);

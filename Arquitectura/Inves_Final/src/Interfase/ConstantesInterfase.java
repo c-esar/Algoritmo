@@ -17,7 +17,7 @@ public interface ConstantesInterfase {
  
     public final int ancho = 500;
     public final int alto = 500;
-    public final static String titulo = "Proyecto";
+    public final static String titulo = "VWN";
     public final static String tituloDatos = "Ingreso datos";
 
 }

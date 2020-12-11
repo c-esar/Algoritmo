@@ -50,6 +50,7 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
 //        this.jTextField5_ProRuta.setText("2");
 //        this.jTextKilometrosDesviar.setText("50");
         initComponents();
+        setTitle("Carga de datos");
     }
 
     @Override
@@ -83,6 +84,7 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
         jButton2_GenerarExcel = new javax.swing.JButton();
         jComboBox1_Metodos = new javax.swing.JComboBox<>();
         jLabel1_metodos = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jTextField1_NumeroProvedores.setText("0");
 
@@ -137,6 +139,9 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
 
         jLabel1_metodos.setText("Seleccionar Método");
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/imagenP.png"))); // NOI18N
+        jLabel2.setAlignmentX(0.5F);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -144,48 +149,39 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(19, 19, 19)
-                                .addComponent(jTextKilometrosDesviar, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(0, 1, Short.MAX_VALUE)
-                                        .addComponent(jLabel5_ProRuta))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel2_CapVehiculo)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel4_CargaMIn)
-                                                .addComponent(jLabel3_CapVolumen)))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel2_CapVehiculo)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField5_ProRuta, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)
-                                            .addComponent(jTextField2_CpaVehiculo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jTextField3_CapVolumen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField4_CargaMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(10, 10, 10))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1_SubirExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2_GenerarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1_metodos)
-                        .addGap(22, 22, 22)
-                        .addComponent(jComboBox1_Metodos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                                            .addComponent(jLabel4_CargaMIn)
+                                            .addComponent(jLabel3_CapVolumen)))
+                                    .addComponent(jLabel5_ProRuta)
+                                    .addComponent(jLabel1_metodos)
+                                    .addComponent(jLabel6))
+                                .addGap(43, 43, 43)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField2_CpaVehiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(jTextField3_CapVolumen, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(jTextField4_CargaMin, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                                    .addComponent(jTextField5_ProRuta)
+                                    .addComponent(jComboBox1_Metodos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jTextKilometrosDesviar)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton1_SubirExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(105, 105, 105)
+                                .addComponent(jButton2_GenerarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 16, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2_CapVehiculo)
                     .addComponent(jTextField2_CpaVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -209,11 +205,11 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextKilometrosDesviar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1_SubirExcel)
-                    .addComponent(jButton2_GenerarExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1_SubirExcel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2_GenerarExcel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -372,6 +368,7 @@ public class JPanelElementos extends javax.swing.JFrame implements ConstantesInt
     private javax.swing.JComboBox<String> jComboBox1_Metodos;
     private javax.swing.JLabel jLabel1_metodos;
     private javax.swing.JLabel jLabel1_numeroProvedores;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel2_CapVehiculo;
     private javax.swing.JLabel jLabel3_CapVolumen;
     private javax.swing.JLabel jLabel4_CargaMIn;
