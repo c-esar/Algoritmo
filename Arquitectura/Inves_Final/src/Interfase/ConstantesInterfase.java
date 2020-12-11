@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  * @author David
  */
 public interface ConstantesInterfase {
-
+ 
     public final int ancho = 500;
     public final int alto = 500;
     public final static String titulo = "Proyecto";

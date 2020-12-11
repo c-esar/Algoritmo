@@ -11,7 +11,7 @@ import Variables.AtributosSistema;
  * @author cesard.chacond
  */
 public interface Constantes {
-
+ 
     final AtributosSistema datos = AtributosSistema.getInstance();
     final String Capacidad_Vehiculo = "Capacidad Vehiculo";
     final String Volumen_Vehiculo = "Volumen Vehiculo";

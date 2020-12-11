@@ -140,7 +140,7 @@ public class MetodosCalculoEmisionImp extends MetodosCalculoEmision {
                 } else {
                     GuardarCargasMinimas(x, dia);
                 }
-
+  
             }
             CAB = true;
             SinAB = true;

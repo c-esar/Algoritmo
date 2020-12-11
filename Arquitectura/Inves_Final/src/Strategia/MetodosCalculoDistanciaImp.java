@@ -37,9 +37,9 @@ public class MetodosCalculoDistanciaImp extends MetodosCalculoDistancia {
         datos.setKilometrosDesviar(KilometrosDesviar);
         PesosNormal = new ArrayList<>();
         PesosNosuperados = new ArrayList<>();
-        Aux = new ArrayList<>();
+        Aux = new ArrayList<>(); 
     }
-
+ 
     @Override
     public boolean InicioProceso() {
         SacarPesoPorDia();

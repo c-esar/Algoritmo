@@ -23,7 +23,7 @@ import Builder.SalidaCsv;
 import java.awt.Image;
 import java.awt.Toolkit;
 import static Constantes.Constantes.datos;
-
+  
 /**
  *
  * @author Ingenieria

@@ -19,7 +19,7 @@ public abstract class MetodosCalculoDistancia implements MetodosCalculo, Constan
     protected ArrayList<ArrayList<Double>> PesosNosuperados; // SinA
     protected ArrayList<ArrayList<Double>> PesosNormal; // CA
     protected ArrayList<ArrayList<Double>> Aux; // auxiliar
-    
+     
     public boolean isCAB() {
         return CAB;
     }

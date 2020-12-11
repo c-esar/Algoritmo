@@ -17,7 +17,7 @@ import Strategia.MetodosCalculoEmisionImp;
  * @author cesard.chacond
  */
 public class FactoryImp implements FactoryImplementacion {
-
+ 
     @Override
     public boolean inicioMetodos(Object a) {
         if (a instanceof MetodosCalculoDistanciaImp){

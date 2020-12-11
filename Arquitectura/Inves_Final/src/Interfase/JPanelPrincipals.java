@@ -16,7 +16,7 @@ import javax.swing.JFrame;
  * @author David
  */
 public class JPanelPrincipals extends javax.swing.JFrame implements ConstantesInterfase {
-
+ 
     /**
      * Creates new form JPanelPrincipals
      */

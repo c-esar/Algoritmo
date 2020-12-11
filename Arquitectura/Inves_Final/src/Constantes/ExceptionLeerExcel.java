@@ -10,7 +10,7 @@ package Constantes;
  * @author Ingenieria
  */
 public interface ExceptionLeerExcel {
-    
+     
     final String ErrorLectura = "Error al leer archivo";
     final String ErrorCargaDatos = "Error al cargar datos en la matriz";
     final String ErrorCerrarExcel = "Error al cerrar el archivo excel";

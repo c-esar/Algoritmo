@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @author David
  */
 public class AtributosSistema {
-
+ 
     private static AtributosSistema metodosCargaAB;
     private int numeroProvedores = 0;
     private HashMap<String, Double> CapVolVehiculo;

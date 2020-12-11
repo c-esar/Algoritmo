@@ -15,3 +15,4 @@ import CargaDatosExcel.CargaExcel;
 public interface FactoryImplementacion {
     public boolean inicioMetodos(Object a);
 }
+ 

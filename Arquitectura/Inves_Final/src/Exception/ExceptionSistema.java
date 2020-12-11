@@ -10,7 +10,7 @@ package Exception;
  * @author cesard.chacond
  */
 public abstract class ExceptionSistema extends Exception{
-    
+     
     public NewExceptionCreacionDatos exceptionCreacionDatos = new NewExceptionCreacionDatos();
     public NewExceptionExcel exceptionExcel = new NewExceptionExcel();
 

@@ -216,7 +216,7 @@ public class CargaExcelImp implements CargaExcel, Constantes {
                                         num = datos.getPuntosDivicion().get(dia).get(u).get(1).intValue();
                                         break;
                                     }
-                                }
+                                 }
 
                                 armogrupo += String.valueOf((int) Double.parseDouble(String.valueOf(datos.getProvedoresNombre().get(num))));
                                 if (p < datos.getResultadosFinales().get(dia).get("grupo" + (j + 1)).size() - 1) {

@@ -18,7 +18,7 @@ public abstract class MetodosCalculoEmision implements MetodosCalculo, Constante
     protected ArrayList<ArrayList<Double>> PesosNosuperados; // SinA
     protected ArrayList<ArrayList<Double>> PesosNormal; // CA
     protected ArrayList<ArrayList<Double>> Aux; // auxiliar
-    
+      
     public boolean isCAB() {
         return CAB;
     }

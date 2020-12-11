@@ -15,7 +15,7 @@ import Constantes.ExceptionLeerExcel;
  * @author David
  */
 public class NewExceptionExcel extends ExceptionSistema {
-
+ 
     public NewExceptionExcel() {
     }
 

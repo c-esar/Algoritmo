@@ -13,7 +13,7 @@ import java.util.HashMap;
  * @author cesard.chacond
  */
 public interface MetodosCalculo {
-
+ 
     public boolean InicioProceso();
 
     public void CrearPuntosArrayList(double[][] Puntos, String dia, int numeroDias);
