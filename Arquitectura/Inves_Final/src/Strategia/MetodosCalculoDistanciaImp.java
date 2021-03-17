@@ -13,11 +13,7 @@ import static Constantes.Constantes.Nodos_Directos;
 import static Constantes.Constantes.Nodos_Sin_Ahorro;
 import static Constantes.Constantes.Nodos_Superan_Capacidad_Vehiculo;
 import static Constantes.Constantes.Volumen_Vehiculo;
-import static java.lang.Math.random;
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -736,7 +732,7 @@ public class MetodosCalculoDistanciaImp extends MetodosCalculoDistancia {
         try {
             Random random = new Random();
             int valor = (int) Math.floor(Math.random() * 50 + 1);
-            for (int i = 0; i < 1000; i++) {
+            for (int i = 0; i < 800; i++) {
                 ArrayList<ArrayList<Double>> tmpCopia = new ArrayList<>();
                 int numero = random.nextInt(copiaPuntos.length - 1);
                 if (copiaPuntos[numero].length == 0 || numero < 0 || (copiaPuntos[numero].length) >= porRuta || evaluarBloqueoPunto(bloqueo, numero)) {
